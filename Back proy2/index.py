@@ -1,32 +1,23 @@
-# Aca realizamos las importaciones
 from flask import Flask,request
 from flask_cors import CORS
 import json
 from GestionUsuarios import Gestor
 
-# En esta parte creamos nuestra aplicacion 
 app = Flask(__name__)
 
-# Aca realizamos configuracion de cors
 CORS(app)
 
-
-
-#En este espacio puedo declarar alguna variable global
 gestor = Gestor()
 
 
-#Aca iniciamos con el manejo de nuestras rutas
 @app.route('/')
 def index():
-    return '{\"data\":\"Hello World\"}'
+    return '{\"data\":\"HOLA\"}'
 
-#Obtener todos los usuarios
 @app.route('/obtenerusuarios')
 def usuarios():
     return gestor.getusuarios()
 
-#Insertar un usuario
 @app.route('/insertar',methods=['POST'])
 def insertar():
     dato=request.json
